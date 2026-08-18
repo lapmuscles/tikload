@@ -1,60 +1,60 @@
-# TikSave — TikTok No-Watermark Downloader
+# TikLoad — TikTok 無浮水印下載器
 
-A modern, fast, and beautiful web app for downloading TikTok videos, audio, and images without watermarks.
+一個現代、快速且精美的網頁應用程式，用於下載 TikTok 影片、音訊與圖片（無浮水印）。
 
-## Features
+## 功能特色
 
-- ⚡ **No Watermark** — Download clean videos
-- 🎵 **Multiple Formats** — Video (MP4), Audio (MP3), Image (JPG)
-- 📱 **Fully Responsive** — Works on all devices
-- 🎨 **Modern UI** — Dark theme with glassmorphism & animations
-- 🔒 **Privacy First** — No data stored, no login required
-- 🚀 **Free & Unlimited** — No limits, no ads
+- ⚡ **無浮水印** — 下載乾淨無水印的影片
+- 🎵 **多種格式** — 影片（MP4）、音訊（MP3）、圖片（JPG）
+- 📱 **完整響應式** — 支援所有裝置
+- 🎨 **現代 UI** — 深色主題、玻璃擬態效果與流暢動畫
+- 🔒 **隱私優先** — 不儲存任何資料、無需登入
+- 🚀 **免費無限** — 無限制、無廣告
 
-## Tech Stack
+## 技術架構
 
-| Layer | Technology |
-|-------|-----------|
-| Frontend | HTML5, CSS3 (modern), Vanilla JS |
-| Backend | Netlify Functions (Serverless) |
-| API | tikwm.com (free TikTok API) |
-| Hosting | Netlify (static + serverless) |
+| 層級 | 技術 |
+|------|------|
+| 前端 | HTML5、CSS3（現代）、原生 JavaScript |
+| 後端 | Netlify Functions（Serverless 無伺服器函數） |
+| API | tikwm.com（免費 TikTok API） |
+| 主機 | Netlify（靜態網站 + 無伺服器函數） |
 
-## Project Structure
+## 專案結構
 
 ```
-tiktok-downloader/
-├── netlify.toml           # Netlify configuration
-├── public/                # Static frontend
-│   ├── index.html         # Main page
+tikload/
+├── netlify.toml           # Netlify 設定檔
+├── public/                # 前端靜態資源
+│   ├── index.html         # 主頁面
 │   ├── css/
-│   │   └── styles.css     # Modern dark UI
+│   │   └── styles.css     # 現代深色 UI 樣式
 │   ├── js/
-│   │   └── app.js         # Frontend logic
+│   │   └── app.js         # 前端邏輯
 │   └── assets/
-│       └── favicon.svg    # Favicon
-├── functions/             # Netlify serverless functions
-│   └── tiktok-api.js      # API proxy function
+│       └── favicon.svg    # 網站圖示
+├── functions/             # Netlify 無伺服器函數
+│   └── tiktok-api.js      # API 代理函數
 └── README.md
 ```
 
-## Getting Started
+## 快速開始
 
-### Local Development
+### 本機開發
 
 ```bash
-# Install Netlify CLI
+# 安裝 Netlify CLI
 npm install -g netlify-cli
 
-# Start local dev server
+# 啟動本機開發伺服器
 netlify dev
 ```
 
-The app will be available at `http://localhost:8888`.
+應用程式將啟動於 `http://localhost:8888`。
 
-### Deploy to Netlify
+### 部署到 Netlify
 
-#### Option 1: Via Netlify CLI
+#### 方式一：使用 Netlify CLI
 
 ```bash
 netlify login
@@ -62,60 +62,59 @@ netlify init
 netlify deploy
 ```
 
-#### Option 2: Via GitHub
+#### 方式二：透過 GitHub
 
-1. Push this repo to GitHub
-2. Go to [app.netlify.com](https://app.netlify.com)
-3. Click "Add new site" → "Import an existing project"
-4. Select your repo
-5. Build settings:
-   - Build command: *(leave empty)*
-   - Publish directory: `public`
-6. Click "Deploy"
+1. 將此儲存庫推送到 GitHub
+2. 前往 [app.netlify.com](https://app.netlify.com)
+3. 點擊「Add new site」→「Import an existing project」
+4. 選擇你的 GitHub 儲存庫
+5. 設定：
+   - Build command：（留空）
+   - Publish directory：`public`
+6. 點擊「Deploy」
 
-#### Option 3: Drag & Drop
+#### 方式三：拖放部署
 
-1. Zip the `public` folder
-2. Drag & drop onto [app.netlify.com/drop](https://app.netlify.com/drop)
-3. *(Note: drag & drop won't include serverless functions — use CLI or GitHub for full functionality)*
+1. 將 `public` 資料夾壓縮成 zip
+2. 拖放至 [app.netlify.com/drop](https://app.netlify.com/drop)
+3. *（注意：拖放部署不包含無伺服器函數，完整功能請使用 CLI 或 GitHub 方式）*
 
-## How It Works
+## 運作原理
 
-1. User pastes a TikTok URL into the input field
-2. Frontend sends the URL to the Netlify Function
-3. Function calls the `tikwm.com` API with the TikTok URL
-4. API returns video metadata (no-watermark URL, audio URL, cover image)
-5. Frontend renders download buttons with the media URLs
+1. 使用者將 TikTok 連結貼入輸入欄位
+2. 前端將連結傳送至 Netlify Function
+3. Function 呼叫 `tikwm.com` API 並传入 TikTok 連結
+4. API 回傳影片資訊（無浮水印網址、音訊網址、封面圖片）
+5. 前端渲染下載按鈕
 
-## API
+## API 說明
 
-The app uses [tikwm.com](https://tikwm.com) as the backend API:
+本應用使用 [tikwm.com](https://tikwm.com) 作為後端 API：
 
-- **Endpoint:** `GET https://www.tikwm.com/api/?url=<tiktok_url>&hd=1`
-- **Response:** JSON with video info
+- **端點：** `GET https://www.tikwm.com/api/?url=<tiktok_url>&hd=1`
+- **回應：** 包含影片資訊的 JSON 格式
 
-### Response Fields
+### 回應欄位說明
 
-| Field | Description |
-|-------|-------------|
-| `play` | No-watermark video URL |
-| `wmplay` | Watermarked video URL |
-| `hdplay` | HD no-watermark video URL |
-| `music.play` | Audio (MP3) URL |
-| `cover` | Cover image URL |
-| `title` | Video title/description |
-| `author.nickname` | Author username |
-| `size` | File size in bytes |
-| `duration` | Duration in seconds |
+| 欄位 | 說明 |
+|------|------|
+| `play` | 無浮水印影片網址 |
+| `wmplay` | 含浮水印影片網址 |
+| `hdplay` | 高畫質無浮水印影片網址 |
+| `music.play` | 音訊（MP3）網址 |
+| `cover` | 封面圖片網址 |
+| `title` | 影片標題/描述 |
+| `author.nickname` | 作者用戶名 |
+| `size` | 檔案大小（位元組） |
+| `duration` | 影片時長（秒） |
 
-## License
+## 注意事項
 
-This project is provided for **educational and personal use only**.
-
-- Not affiliated with TikTok or ByteDance
-- Respect content creators' rights
-- Do not use for commercial purposes or to infringe copyright
+- 本專案僅供**教育與個人使用**
+- 與 TikTok 或 ByteDance 無任何隸屬關係
+- 請尊重內容創作者的版權
+- 請勿用於商業用途或侵權行為
 
 ---
 
-Built with ❤️ using modern web technologies.
+以 ❤️ 打造，使用現代網頁技術。
