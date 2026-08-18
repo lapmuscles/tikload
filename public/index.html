@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>TikLoad — TikTok 無浮水印下載器</title>
+  <meta name="description" content="下載 TikTok 影片、音訊與圖片（無浮水印）。快速、免費、無需登入。" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Noto+Sans+TC:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/styles.css" />
+</head>
+<body>
+  <!-- 動態背景 -->
+  <div class="bg-animation">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- 主容器 -->
+  <div class="container">
+    <!-- 頁首 -->
+    <header class="header">
+      <div class="logo">
+        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" stroke="url(#logo-gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <defs>
+            <linearGradient id="logo-gradient" x1="4" y1="4" x2="20" y2="20">
+              <stop offset="0%" stop-color="#25F4EE"/>
+              <stop offset="100%" stop-color="#FE2C55"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>TikLoad</span>
+      </div>
+      <nav class="nav">
+        <a href="#features" class="nav-link">功能特色</a>
+        <a href="#how-it-works" class="nav-link">使用方法</a>
+      </nav>
+    </header>
+
+    <!-- 主視覺區 -->
+    <section class="hero">
+      <h1 class="hero-title">
+        下載 TikTok
+        <span class="gradient-text">無浮水印影片</span>
+      </h1>
+      <p class="hero-subtitle">
+        貼上 TikTok 連結，即可下載影片、音訊與圖片（高清品質）— 免費、快速、無需登入。
+      </p>
+
+      <!-- 網址輸入區 -->
+      <div class="input-section">
+        <div class="input-wrapper" id="inputWrapper">
+          <svg class="input-icon" width="20" height="20" viewBox="0 0 24 24" fill="none">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <input
+            type="url"
+            id="urlInput"
+            class="url-input"
+            placeholder="請貼上 TikTok 連結…"
+            autocomplete="off"
+            spellcheck="false"
+          />
+          <button id="downloadBtn" class="download-btn" disabled>
+            <span class="btn-text">取得</span>
+            <span class="btn-spinner" hidden></span>
+          </button>
+        </div>
+        <div class="error-msg" id="errorMsg" hidden></div>
+      </div>
+
+      <!-- 快速統計 -->
+      <div class="stats-row">
+        <div class="stat">
+          <span class="stat-value">100%</span>
+          <span class="stat-label">免費</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">無</span>
+          <span class="stat-label">浮水印</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">HD</span>
+          <span class="stat-label">高畫質</span>
+        </div>
+        <div class="stat-divider"></div>
+        <div class="stat">
+          <span class="stat-value">∞</span>
+          <span class="stat-label">下載次數</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 結果區 -->
+    <section class="results-section" id="resultsSection" hidden>
+      <div class="results-card" id="resultsCard">
+        <!-- 由 JS 動態填入 -->
+      </div>
+    </section>
+
+    <!-- 功能特色 -->
+    <section class="features" id="features">
+      <h2 class="section-title">為什麼選擇 <span class="gradient-text">TikLoad</span>？</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>極速下載</h3>
+          <p>幾秒鐘內完成下載，無需排隊等候。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h3>隱私安全</h3>
+          <p>我們不儲存任何資料，連結會自動過期。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h3>多種格式</h3>
+          <p>可下載為影片（MP4）、音訊（MP3）或圖片（JPG）。</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>全平台支援</h3>
+          <p>手機、平板、電腦 — 完整響應式設計。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 使用方式 -->
+    <section class="how-it-works" id="how-it-works">
+      <h2 class="section-title">使用<span class="gradient-text">方式</span></h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>複製連結</h3>
+          <p>開啟 TikTok，點擊「分享」，複製影片連結。</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>貼上連結</h3>
+          <p>將連結貼在上方，然後點擊「取得」。</p>
+        </div>
+        <div class="step-connector"></div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>開始下載</h3>
+          <p>選擇格式，即可儲存檔案。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 頁尾 -->
+    <footer class="footer">
+      <p>TikLoad 與 TikTok 無任何隸屬關係。所有權利歸原作者所有。</p>
+      <p class="footer-sub">以 ❤️ 打造，服務創作者與使用者</p>
+    </footer>
+  </div>
+
+  <script src="/js/app.js"></script>
+</body>
+</html>
